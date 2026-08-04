@@ -8,7 +8,8 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer,
 } from "recharts";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { useTheme } from "next-themes";
 import { FadeIn } from "@/components/fade-in";
 import { SectionHeading } from "@/components/section-heading";
@@ -32,6 +33,24 @@ const ui: Record<
     radarName: "Skill Level",
   },
 };
+
+function SkillBar({ level }: { level: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  return (
+    <div
+      ref={ref}
+      className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted"
+    >
+      <motion.div
+        className="h-full rounded-full bg-primary"
+        initial={{ width: 0 }}
+        animate={{ width: isInView ? `${level}%` : 0 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+      />
+    </div>
+  );
+}
 
 export function Skills() {
   const { resolvedTheme } = useTheme();
@@ -118,15 +137,7 @@ export function Skills() {
                             {skill.level}
                           </span>
                         </div>
-                        <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
-                          <motion.div
-                            className="h-full rounded-full bg-primary"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true, margin: "-60px" }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                          />
-                        </div>
+                        <SkillBar level={skill.level} />
                       </div>
                     ))}
                   </div>
