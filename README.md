@@ -1,6 +1,6 @@
-# 刘海 - 个人作品集
+# 刘海 - 个人简历
 
-基于简历搭建的 Next.js 个人网站，用于展示前端与 AI 前端工程能力。
+基于简历搭建的 Next.js 个人简历网站，用于展示前端工程能力。
 
 ## 技术栈
 
@@ -50,8 +50,13 @@ knowledge/            # RAG 知识库（第二阶段接入 DeepSeek 用）
 
 Vercel 会自动使用 `npm run build` 构建并部署。
 
+## 部署到 pinme 平台
+1. 打包方式暂时修改为 SSG。
+2. Pinme 平台访问[个人链接](https://d7512d3e.pinme.dev/)
+
 ## 后续扩展
 
 - 在 `knowledge/` 中继续补充项目、技术沉淀等 Markdown。
 - 在 `app/api/chat/route.ts` 中实现 RAG 检索 + DeepSeek SSE 流式返回。
 - 在页面右下角添加悬浮聊天窗口，对接 `/api/chat`。
+- 后续有可能添加一个技术博客模块
