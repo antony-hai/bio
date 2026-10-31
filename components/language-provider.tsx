@@ -45,8 +45,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     document.title =
       lang === "zh"
-        ? "刘海 - 资深前端开发工程师 / AI前端工程师"
-        : "Liu Hai - Senior Frontend Engineer / AI Frontend Engineer";
+        ? "刘海 - 资深前端开发工程师 / Node.js 工程师"
+        : "Liu Hai - Senior Frontend Engineer / Node.js Engineer";
     localStorage.setItem("lang", lang);
   }, [lang, hydrated]);
 

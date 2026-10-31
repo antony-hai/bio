@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FadeIn } from "@/components/fade-in";
+import { ImpactMap } from "@/components/impact-map";
 import { SectionHeading } from "@/components/section-heading";
 import { profile } from "@/data/resume";
 import { useLanguage, type Lang } from "@/components/language-provider";
@@ -134,6 +135,10 @@ export function About() {
         </div>
 
         <FadeIn delay={0.4} className="mt-5">
+          <ImpactMap />
+        </FadeIn>
+
+        <FadeIn delay={0.5} className="mt-5">
           <div className="rounded-md border-l-2 border-primary bg-muted/30 p-6 md:p-8">
             <p className="text-lg font-medium leading-relaxed text-foreground sm:text-xl">
               {t.quote}

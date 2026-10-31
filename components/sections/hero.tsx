@@ -6,23 +6,27 @@ import { profile } from "@/data/resume";
 import { useLanguage } from "@/components/language-provider";
 import { cn } from "@/lib/utils";
 
-const highlights: Record<
-  string,
-  { value: Record<"zh" | "en", string>; label: Record<"zh" | "en", string> }
-> = {
-  core: {
-    value: { zh: "中后台·可视化", en: "Admin · Visualization" },
+const highlights: {
+  value: Record<"zh" | "en", string>;
+  label: Record<"zh" | "en", string>;
+}[] = [
+  {
+    value: { zh: "中后台 · 可视化", en: "Admin · Visualization" },
     label: { zh: "核心方向", en: "Core Focus" },
   },
-  ai: {
-    value: { zh: "AI", en: "AI" },
-    label: { zh: "前端应用", en: "Frontend" },
+  {
+    value: { zh: "Node.js", en: "Node.js" },
+    label: { zh: "BFF · CI/CD", en: "BFF · CI/CD" },
   },
-  industries: {
-    value: { zh: "医疗·教育·金融", en: "Healthcare · EdTech · Finance" },
+  {
+    value: { zh: "AI 前端", en: "AI Frontend" },
+    label: { zh: "LLM · RAG · SSE", en: "LLM · RAG · SSE" },
+  },
+  {
+    value: { zh: "医疗 · 教育 · 金融", en: "Healthcare · EdTech · Finance" },
     label: { zh: "多行业落地", en: "Industries" },
   },
-};
+];
 
 const ui = {
   zh: {
@@ -99,13 +103,18 @@ export function Hero() {
           </p>
         </motion.div>
 
-        <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {Object.values(highlights).map((h) => (
+        <motion.div
+          variants={item}
+          className="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4"
+        >
+          {highlights.map((h) => (
             <div
-              key={h.label[lang]}
-              className="inline-flex items-baseline gap-1.5 rounded-md border border-border bg-card px-4 py-2"
+              key={h.label.zh}
+              className="flex flex-col items-center justify-center gap-0.5 rounded-md border border-border bg-card px-3 py-2.5 text-center"
             >
-              <span className="text-base font-semibold text-foreground">{h.value[lang]}</span>
+              <span className="text-sm font-semibold leading-snug text-foreground sm:text-base">
+                {h.value[lang]}
+              </span>
               <span className="text-xs text-muted-foreground">{h.label[lang]}</span>
             </div>
           ))}

@@ -5,12 +5,15 @@ import { AccentProvider } from "@/components/accent-provider";
 import { LanguageProvider } from "@/components/language-provider";
 
 export const metadata: Metadata = {
-  title: "刘海 - 资深前端开发工程师 / AI前端工程师",
+  title: "刘海 - 资深前端开发工程师 / Node.js 工程师",
   description:
-    "刘海的个人作品集：10年前端开发经验，深耕中后台系统、数据可视化、AI前端应用与跨端开发。",
+    "刘海的个人作品集：10年前端开发经验，深耕中后台系统、数据可视化、AI 前端应用、Node.js 全栈与跨端开发。",
   keywords: [
     "刘海",
     "前端工程师",
+    "Node.js",
+    "BFF",
+    "CI/CD",
     "AI前端",
     "React",
     "Vue3",
@@ -20,9 +23,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "刘海" }],
   openGraph: {
-    title: "刘海 - 资深前端开发工程师 / AI前端工程师",
+    title: "刘海 - 资深前端开发工程师 / Node.js 工程师",
     description:
-      "10年前端开发经验，深耕中后台系统、数据可视化、AI前端应用与跨端开发。",
+      "10年前端开发经验，深耕中后台系统、数据可视化、AI 前端应用、Node.js 全栈与跨端开发。",
     type: "website",
     locale: "zh_CN",
   },

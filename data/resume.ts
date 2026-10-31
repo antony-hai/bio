@@ -38,11 +38,99 @@ export interface Project {
   knowledge?: string[];
 }
 
+export interface ImpactLink {
+  action: string;
+  metric: string;
+  change: string;
+  source: string;
+}
+
+export const impactLinks: Record<Lang, ImpactLink[]> = {
+  zh: [
+    {
+      action: "中后台接入规范 + 全流程线上化",
+      metric: "核心业务效率",
+      change: "+60%",
+      source: "互联网医院鲁班后台",
+    },
+    {
+      action: "jsBridge 统一封装",
+      metric: "跨端兼容问题率",
+      change: "-60%",
+      source: "健康管理师 H5",
+    },
+    {
+      action: "TypeScript 全流程 + 50+ 公共类型",
+      metric: "线上 bug 率",
+      change: "-50%",
+      source: "互联网医院鲁班后台",
+    },
+    {
+      action: "Node.js 中间层聚合 Java 微服务",
+      metric: "数据响应速度",
+      change: "+45%",
+      source: "私募基金中后台",
+    },
+    {
+      action: "统一数据交互规范",
+      metric: "接口联调问题率",
+      change: "-40%",
+      source: "智慧树专业谱图",
+    },
+    {
+      action: "Vue3 标准化体系 + AI 对话组件",
+      metric: "团队开发效率",
+      change: "+35%",
+      source: "智慧树专业谱图",
+    },
+  ],
+  en: [
+    {
+      action: "Admin standards + full digitization",
+      metric: "Core business efficiency",
+      change: "+60%",
+      source: "Luban Back-office",
+    },
+    {
+      action: "Unified jsBridge wrapper",
+      metric: "Cross-platform issue rate",
+      change: "-60%",
+      source: "Health Manager H5",
+    },
+    {
+      action: "Full TypeScript rollout + 50+ shared types",
+      metric: "Production bug rate",
+      change: "-50%",
+      source: "Luban Back-office",
+    },
+    {
+      action: "Node.js BFF over Java microservices",
+      metric: "Data response speed",
+      change: "+45%",
+      source: "Private Equity Back-office",
+    },
+    {
+      action: "Standardized data contract",
+      metric: "API integration issue rate",
+      change: "-40%",
+      source: "Zhihuishu Atlas",
+    },
+    {
+      action: "Vue3 design system + AI chat UI",
+      metric: "Team development efficiency",
+      change: "+35%",
+      source: "Zhihuishu Atlas",
+    },
+  ],
+};
+
+export type SkillTier = "expert" | "proficient" | "familiar";
+
 export interface SkillGroup {
   category: string;
   items: {
     name: string;
-    level: number;
+    tier: SkillTier;
   }[];
 }
 
@@ -61,7 +149,7 @@ export interface NavItem {
 export const profile: Record<Lang, Profile> = {
   zh: {
     name: "刘海",
-    title: "资深前端开发工程师 / AI前端工程师",
+    title: "资深前端开发工程师 / Node.js 工程师",
     phone: "13129932870",
     email: "antony_l@foxmail.com",
     experience: "10年经验",
@@ -70,7 +158,7 @@ export const profile: Record<Lang, Profile> = {
     summary: [
       "10年资深前端开发经验，深耕中后台系统、数据可视化、AI前端应用、跨端开发领域，具备从技术选型、框架搭建到团队落地的全流程能力。",
       "具备LLM应用前端开发实战经验，熟悉LLM API对接、RAG知识库搭建、AI Agent交互界面开发及SSE流式渲染；熟练运用AI Coding工具赋能开发，兼顾效率与代码质量。",
-      "熟悉私募基金、SaaS、线上医疗、教育科技多行业业务逻辑，可快速适配不同行业需求并输出高质量技术方案。",
+      "熟悉私募基金、SaaS、线上医疗、教育科技多行业业务逻辑，快速适配不同行业需求并输出高质量技术方案。",
       "辅修市场营销双学位，兼具技术思维与商业视角，能精准理解产品需求，高效衔接产品与开发环节。",
     ],
     aboutSummary: [
@@ -84,7 +172,7 @@ export const profile: Record<Lang, Profile> = {
   },
   en: {
     name: "Liu Hai",
-    title: "Senior Frontend Engineer / AI Frontend Engineer",
+    title: "Senior Frontend Engineer / Node.js Engineer",
     phone: "13129932870",
     email: "antony_l@foxmail.com",
     experience: "10 Years",
@@ -111,7 +199,7 @@ export const experiences: Record<Lang, Experience[]> = {
   zh: [
     {
       id: "zhihuishu",
-      period: "2025.01 - 至今",
+      period: "2025.01 - 2026.08",
       company: "上海智慧树网",
       role: "资深前端开发工程师",
       description: "负责专业图谱业务B端大平台前端开发，主导AI智能问答模块，搭建Vue3标准化开发体系。",
@@ -125,10 +213,10 @@ export const experiences: Record<Lang, Experience[]> = {
       id: "qinzhi",
       period: "2023.09 - 2024.12",
       company: "上海沁雉商贸有限公司",
-      role: "资深前端开发工程师",
+      role: "前端 leader",
       description: "负责公司SaaS平台前端架构设计与核心功能开发，推动前端工程化与组件化建设。",
       highlights: [
-        "主导前端技术选型与框架搭建",
+        "作为前端 leader 主导技术选型与框架搭建",
         "推动组件化与代码规范落地",
         "优化前端性能与用户体验",
       ],
@@ -140,7 +228,7 @@ export const experiences: Record<Lang, Experience[]> = {
       role: "高级web前端开发工程师",
       description: "负责互联网医院运营中后台、护理服务站小程序、健康管理师H5等医疗产品前端开发。",
       highlights: [
-        "独立完成互联网医院鲁班后台技术选型与框架搭建",
+        "作为前端组长牵头互联网医院鲁班后台技术选型与框架搭建",
         "推动TypeScript全流程落地，抽离50+公共类型",
         "开发护理服务站小程序与健康管理师H5，支撑日均万次运营操作",
       ],
@@ -173,7 +261,7 @@ export const experiences: Record<Lang, Experience[]> = {
   en: [
     {
       id: "zhihuishu",
-      period: "2025.01 - Present",
+      period: "2025.01 - 2026.08",
       company: "Shanghai Zhihuishu Network",
       role: "Senior Frontend Engineer",
       description: "Led frontend development for the B-end professional atlas platform, spearheaded the AI Q&A module, and established a standardized Vue3 development system.",
@@ -187,10 +275,10 @@ export const experiences: Record<Lang, Experience[]> = {
       id: "qinzhi",
       period: "2023.09 - 2024.12",
       company: "Shanghai Qinzhi Trading Co., Ltd.",
-      role: "Senior Frontend Engineer",
+      role: "Frontend Leader",
       description: "Responsible for frontend architecture design and core feature development of the company's SaaS platform, driving frontend engineering and componentization.",
       highlights: [
-        "Led frontend tech selection and framework setup",
+        "Led frontend tech selection and framework setup as frontend leader",
         "Promoted componentization and code standard adoption",
         "Optimized frontend performance and user experience",
       ],
@@ -202,7 +290,7 @@ export const experiences: Record<Lang, Experience[]> = {
       role: "Senior Web Frontend Engineer",
       description: "Developed frontend for internet hospital operation back-office, nursing service station mini-program, and health manager H5 medical products.",
       highlights: [
-        "Independently completed tech selection and framework setup for the internet hospital Luban back-office",
+        "As frontend lead, independently completed tech selection and framework setup for the internet hospital Luban back-office",
         "Drove full TypeScript adoption across the team, extracting 50+ shared types",
         "Developed nursing service station mini-program and health manager H5, supporting tens of thousands of daily operations",
       ],
@@ -239,7 +327,7 @@ export const projects: Record<Lang, Project[]> = {
     {
       id: "zhihuishu-atlas",
       name: "智慧树专业谱图",
-      period: "2025.01 - 至今",
+      period: "2025.01 - 2026.08",
       company: "上海智慧树网",
       intro:
         "智慧树网专业图谱业务B端大平台，给各个高校专业提供专业数据分析、AI智能问答和可视化系统。",
@@ -269,7 +357,7 @@ export const projects: Record<Lang, Project[]> = {
       intro: "医疗行业大型运营中后台系统，支撑医院日均超万次运营操作。",
       stack: ["React", "Ant Design Pro 5", "TypeScript", "UmiJS", "ahooks"],
       responsibilities: [
-        "独立完成技术选型与框架搭建，编写技术文档并开展组内培训",
+        "作为前端组长独立完成技术选型与框架搭建，编写技术文档并开展组内培训",
         "协助中高级工程师完成业务开发，推动TypeScript规范落地",
         "同后端定义接口规范，对接公司SSO登录与权限系统",
         "保障中后台接入一致性",
@@ -361,7 +449,7 @@ export const projects: Record<Lang, Project[]> = {
     {
       id: "zhihuishu-atlas",
       name: "Zhihuishu Professional Atlas",
-      period: "2025.01 - Present",
+      period: "2025.01 - 2026.08",
       company: "Shanghai Zhihuishu Network",
       intro:
         "A B-end platform for Zhihuishu's professional atlas business, providing universities with professional data analysis, AI Q&A, and visualization systems.",
@@ -391,7 +479,7 @@ export const projects: Record<Lang, Project[]> = {
       intro: "A large-scale operation back-office system for the healthcare industry, supporting over 10,000 daily operations per hospital.",
       stack: ["React", "Ant Design Pro 5", "TypeScript", "UmiJS", "ahooks"],
       responsibilities: [
-        "Independently completed tech selection and framework setup, wrote technical documentation, and conducted team training",
+        "As frontend lead, independently completed tech selection and framework setup, wrote technical documentation, and conducted team training",
         "Assisted mid-senior engineers with business development and drove TypeScript standard adoption",
         "Defined interface standards with backend and integrated corporate SSO login and permission systems",
         "Ensured consistency across back-office integrations",
@@ -486,35 +574,37 @@ export const skillGroups: Record<Lang, SkillGroup[]> = {
     {
       category: "前端框架与语言",
       items: [
-        { name: "React", level: 95 },
-        { name: "Vue3", level: 90 },
-        { name: "TypeScript", level: 90 },
-        { name: "ES6/7+", level: 92 },
+        { name: "React", tier: "expert" },
+        { name: "Vue3", tier: "expert" },
+        { name: "TypeScript", tier: "expert" },
+        { name: "ES6/7+", tier: "expert" },
       ],
     },
     {
       category: "样式与可视化",
       items: [
-        { name: "CSS3 / Tailwind", level: 90 },
-        { name: "Echarts", level: 88 },
-        { name: "AntV G6 / D3", level: 82 },
+        { name: "CSS3 / Tailwind", tier: "expert" },
+        { name: "Echarts", tier: "expert" },
+        { name: "AntV G6 / D3", tier: "proficient" },
       ],
     },
     {
       category: "工程化与跨端",
       items: [
-        { name: "Next.js / Vite", level: 85 },
-        { name: "Webpack / UmiJS", level: 85 },
-        { name: "微信小程序 / Taro / UniApp", level: 80 },
-        { name: "Qiankun 微前端", level: 78 },
+        { name: "Next.js / Vite", tier: "expert" },
+        { name: "Webpack / UmiJS", tier: "expert" },
+        { name: "微信小程序 / Taro / UniApp", tier: "proficient" },
+        { name: "Qiankun 微前端", tier: "familiar" },
       ],
     },
     {
-      category: "AI 与全栈",
+      category: "Node.js 与 AI 应用",
       items: [
-        { name: "LLM API / RAG", level: 85 },
-        { name: "AI Agent / SSE", level: 82 },
-        { name: "Node.js / MongoDB", level: 80 },
+        { name: "Node.js / BFF", tier: "proficient" },
+        { name: "LLM API / RAG", tier: "proficient" },
+        { name: "AI Agent / SSE", tier: "proficient" },
+        { name: "MongoDB", tier: "familiar" },
+        { name: "CI/CD 部署", tier: "familiar" },
       ],
     },
   ],
@@ -522,35 +612,37 @@ export const skillGroups: Record<Lang, SkillGroup[]> = {
     {
       category: "Frontend Frameworks & Languages",
       items: [
-        { name: "React", level: 95 },
-        { name: "Vue3", level: 90 },
-        { name: "TypeScript", level: 90 },
-        { name: "ES6/7+", level: 92 },
+        { name: "React", tier: "expert" },
+        { name: "Vue3", tier: "expert" },
+        { name: "TypeScript", tier: "expert" },
+        { name: "ES6/7+", tier: "expert" },
       ],
     },
     {
       category: "Styling & Visualization",
       items: [
-        { name: "CSS3 / Tailwind", level: 90 },
-        { name: "Echarts", level: 88 },
-        { name: "AntV G6 / D3", level: 82 },
+        { name: "CSS3 / Tailwind", tier: "expert" },
+        { name: "Echarts", tier: "expert" },
+        { name: "AntV G6 / D3", tier: "proficient" },
       ],
     },
     {
       category: "Engineering & Cross-platform",
       items: [
-        { name: "Next.js / Vite", level: 85 },
-        { name: "Webpack / UmiJS", level: 85 },
-        { name: "WeChat Mini Program / Taro / UniApp", level: 80 },
-        { name: "Qiankun Micro-frontend", level: 78 },
+        { name: "Next.js / Vite", tier: "expert" },
+        { name: "Webpack / UmiJS", tier: "expert" },
+        { name: "WeChat Mini Program / Taro / UniApp", tier: "proficient" },
+        { name: "Qiankun Micro-frontend", tier: "familiar" },
       ],
     },
     {
-      category: "AI & Full-stack",
+      category: "Node.js & AI Applications",
       items: [
-        { name: "LLM API / RAG", level: 85 },
-        { name: "AI Agent / SSE", level: 82 },
-        { name: "Node.js / MongoDB", level: 80 },
+        { name: "Node.js / BFF", tier: "proficient" },
+        { name: "LLM API / RAG", tier: "proficient" },
+        { name: "AI Agent / SSE", tier: "proficient" },
+        { name: "MongoDB", tier: "familiar" },
+        { name: "CI/CD Deployment", tier: "familiar" },
       ],
     },
   ],
